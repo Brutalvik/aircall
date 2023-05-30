@@ -27,7 +27,8 @@
   justify-content: space-evenly;
 }
 
-.app-items {
+.app-items,
+.app-items-selected {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -41,7 +42,8 @@
   background-color: #00bd82;
 }
 
-.app-items p {
+.app-items p,
+.app-items-selected p {
   margin-left: 8px;
   font-weight: 700;
 }

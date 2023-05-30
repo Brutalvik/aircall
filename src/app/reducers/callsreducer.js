@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedTab: null,
+  activeTab: "allCalls",
   allCalls: [],
   archived: [],
   inbox: [],
@@ -15,9 +15,12 @@ const callsSlice = createSlice({
     getAllCallsSuccess: (state, action) => {
       state.allCalls = action.payload;
     },
+    setActiveTab: (state, action) => {
+      state.activeTab = action.payload;
+    },
   },
 });
 
-export const { getAllCallsSuccess } = callsSlice.actions;
+export const { getAllCallsSuccess, setActiveTab } = callsSlice.actions;
 
 export default callsSlice.reducer;

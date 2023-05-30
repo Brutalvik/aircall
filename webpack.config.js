@@ -8,6 +8,7 @@ module.exports = {
       Components: path.resolve(__dirname, "src/Components"),
       UI: path.resolve(__dirname, "src/UI"),
       app: path.resolve(__dirname, "src/app"),
+      helpers: path.resolve(__dirname, "src/helpers"),
       // Add more aliases for your project directories here if needed
     },
   },
