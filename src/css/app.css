@@ -18,32 +18,11 @@
 }
 
 #app .container-view {
-  padding: 20px;
+  padding: 10px;
 }
 
 #app .app-container {
   padding: 10px;
   display: flex;
   justify-content: space-evenly;
-}
-
-.app-items,
-.app-items-selected {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  border: 1px solid black;
-  padding: 0px 10px;
-  border-radius: 10px;
-}
-
-.app-items-selected {
-  background-color: #00bd82;
-}
-
-.app-items p,
-.app-items-selected p {
-  margin-left: 8px;
-  font-weight: 700;
 }
