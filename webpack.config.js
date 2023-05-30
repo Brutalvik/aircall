@@ -6,6 +6,7 @@ module.exports = {
     extensions: [".js", ".jsx"],
     alias: {
       Components: path.resolve(__dirname, "src/Components"),
+      UI: path.resolve(__dirname, "src/UI"),
       // Add more aliases for your project directories here if needed
     },
   },
