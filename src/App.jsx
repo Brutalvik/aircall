@@ -1,17 +1,21 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import Header from "Components/Header/Header";
+import Appbar from "Components/Appbar/Appbar";
 
 const App = () => {
   return (
     <div className="container">
+      <Appbar />
       <Header />
-      <div className="container-view">Some activities should be here</div>
+
+      <div className="container-view"></div>
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("app"));
+const root = createRoot(document.getElementById("app"));
+root.render(<App />);
 
 export default App;
