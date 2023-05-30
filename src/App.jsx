@@ -5,7 +5,18 @@ import Header from "Components/Header/Header";
 import Container from "Components/Container/Container";
 import Appbar from "UI/Appbar/Appbar";
 
+import { useSelector, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
+import store from "app/store";
+import { getCallsData } from "app/thunks/getAllCallsThunk";
+
 const App = () => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => console.log(state));
+
+  React.useEffect(() => {
+    dispatch(getCallsData(dispatch));
+  }, []);
   return (
     <div className="container">
       <Header />
@@ -18,6 +29,10 @@ const App = () => {
 };
 
 const root = createRoot(document.getElementById("app"));
-root.render(<App />);
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
 export default App;

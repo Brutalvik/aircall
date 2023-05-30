@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
+import allCallsReducer from "app/reducers/callsreducer";
 
 const rootReducer = combineReducers({
-  reducer: {
-    // users: usersReducer,
-    // posts: postsReducer,
-  },
+  allCalls: allCallsReducer,
 });
 
 export default rootReducer;

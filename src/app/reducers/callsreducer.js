@@ -17,3 +17,7 @@ const callsSlice = createSlice({
     },
   },
 });
+
+export const { getAllCallsSuccess } = callsSlice.actions;
+
+export default callsSlice.reducer;
