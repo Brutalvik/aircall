@@ -2,14 +2,11 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 import Header from "Components/Header/Header";
-import Appbar from "Components/Appbar/Appbar";
 
 const App = () => {
   return (
     <div className="container">
-      <Appbar />
       <Header />
-
       <div className="container-view"></div>
     </div>
   );

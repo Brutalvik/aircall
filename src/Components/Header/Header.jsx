@@ -1,4 +1,3 @@
-import Appbar from "Components/Appbar/Appbar";
 import React from "react";
 
 const Header = () => {
@@ -41,7 +40,6 @@ const Header = () => {
           />
         </g>
       </svg>
-      <Appbar />
     </header>
   );
 };
