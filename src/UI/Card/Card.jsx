@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BsFillTelephoneInboundFill,
   BsFillTelephoneXFill,
@@ -8,6 +8,7 @@ import { BiVoicemail, BiArchiveIn, BiArchiveOut } from "react-icons/bi";
 import Badge from "@mui/material/Badge";
 import { handleInformationDisplay } from "helpers/functions";
 import { archiveCall } from "app/thunks/patchArchiveCallThunk";
+import { unarchiveCall } from "app/thunks/patchUnarchiveCallThunk";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 
@@ -52,12 +53,12 @@ const Card = ({
         {isArchived ? (
           <BiArchiveOut
             className="icons"
-            onClick={() => dispatch(archiveCall(id, false))}
+            onClick={() => dispatch(unarchiveCall(id))}
           />
         ) : (
           <BiArchiveIn
             className="icons"
-            onClick={() => dispatch(archiveCall(id, true))}
+            onClick={() => dispatch(archiveCall(id))}
           />
         )}
         <div className="time-container">
