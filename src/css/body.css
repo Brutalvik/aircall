@@ -10,6 +10,8 @@ li {
   border: 0;
   font: inherit;
   font-size: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none !important;
 }
 
 body {
