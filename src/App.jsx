@@ -13,7 +13,7 @@ import { setScrollEvent } from "app/reducers/callsreducer";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isScrolledToTop } = useSelector((state) => state.calls);
+  const { isScrolledToTop, activeTab } = useSelector((state) => state.calls);
 
   useEffect(() => {
     const container = document.querySelector(".container");
@@ -46,7 +46,7 @@ const App = () => {
         <Appbar />
       </div>
       <div className="container-view">
-        <AllCallsContainer />
+        {activeTab === "allCalls" && <AllCallsContainer />}
       </div>
     </div>
   );
