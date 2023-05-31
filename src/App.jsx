@@ -1,25 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 
 import Header from "Components/Header/Header";
 import Container from "Components/Container/Container";
 import Appbar from "UI/Appbar/Appbar";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Provider } from "react-redux";
 import store from "app/store";
 import { getCallsData } from "app/thunks/getAllCallsThunk";
+import { setScrollEvent } from "app/reducers/callsreducer";
 
 const App = () => {
   const dispatch = useDispatch();
+  const { isScrolledToTop } = useSelector((state) => state.calls);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const container = document.querySelector(".container");
+
+    const handleScroll = () => {
+      if (container.scrollTop === 0) {
+        dispatch(setScrollEvent(true));
+        console.log("top");
+      } else {
+        dispatch(setScrollEvent(false));
+        console.log("scrolled");
+      }
+    };
+    container.addEventListener("scroll", handleScroll);
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     dispatch(getCallsData(dispatch));
   }, []);
+
   return (
     <div className="container">
-      <Header />
-      <Appbar />
+      <div
+        className={
+          isScrolledToTop ? "header-container" : "header-container-sticky"
+        }
+      >
+        <Header />
+        <Appbar />
+      </div>
       <div className="container-view">
         <Container />
       </div>

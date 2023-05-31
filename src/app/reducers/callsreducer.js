@@ -6,6 +6,7 @@ const initialState = {
   archived: [],
   inbox: [],
   isLoading: false,
+  isScrolledToTop: true,
 };
 
 const callsSlice = createSlice({
@@ -18,9 +19,13 @@ const callsSlice = createSlice({
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
     },
+    setScrollEvent: (state, action) => {
+      state.isScrolledToTop = action.payload;
+    },
   },
 });
 
-export const { getAllCallsSuccess, setActiveTab } = callsSlice.actions;
+export const { getAllCallsSuccess, setActiveTab, setScrollEvent } =
+  callsSlice.actions;
 
 export default callsSlice.reducer;

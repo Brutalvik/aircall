@@ -15,14 +15,23 @@
   background: white;
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
+  overflow: auto;
 }
 
 #app .container-view {
   padding: 10px;
 }
 
-#app .app-container {
-  padding: 10px;
-  display: flex;
-  justify-content: space-evenly;
+#app .header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+}
+
+#app .header-container-sticky {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
 }

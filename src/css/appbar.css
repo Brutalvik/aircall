@@ -1,3 +1,9 @@
+.app-container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .app-items,
 .app-items-selected {
   display: flex;
