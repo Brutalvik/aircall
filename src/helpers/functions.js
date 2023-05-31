@@ -25,7 +25,3 @@ export const countCallsFromSameNumber = (arr, properties) => {
 export const handleInformationDisplay = () => {
   console.log("INFO CLICKED");
 };
-
-export const handleArchive = () => {
-  console.log("archived");
-};

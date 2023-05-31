@@ -4,10 +4,12 @@ import {
   BsFillTelephoneXFill,
   BsFillInfoCircleFill,
 } from "react-icons/bs";
-import { BiVoicemail, BiArchiveIn } from "react-icons/bi";
+import { BiVoicemail, BiArchiveIn, BiArchiveOut } from "react-icons/bi";
 import Badge from "@mui/material/Badge";
-import { handleInformationDisplay, handleArchive } from "helpers/functions";
+import { handleInformationDisplay } from "helpers/functions";
+import { archiveCall } from "app/thunks/patchArchiveCallThunk";
 import moment from "moment";
+import { useDispatch } from "react-redux";
 
 const Card = ({
   direction,
@@ -20,6 +22,7 @@ const Card = ({
   to,
   count,
 }) => {
+  const dispatch = useDispatch();
   return (
     <div>
       <div className="date-container">
@@ -46,7 +49,20 @@ const Card = ({
           className="icons"
           onClick={handleInformationDisplay}
         />
-        <BiArchiveIn className="icons" onClick={handleArchive} />
+        {isArchived ? (
+          <BiArchiveOut
+            className="icons"
+            onClick={() => dispatch(archiveCall(id, false))}
+          />
+        ) : (
+          <BiArchiveIn
+            className="icons"
+            onClick={() => dispatch(archiveCall(id, true))}
+          />
+        )}
+        <div className="time-container">
+          <p>{moment(createdAt).format("hh:mm A")}</p>
+        </div>
       </div>
     </div>
   );

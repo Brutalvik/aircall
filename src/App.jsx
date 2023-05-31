@@ -10,11 +10,12 @@ import { Provider } from "react-redux";
 import store from "app/store";
 import { getCallsData } from "app/thunks/getAllCallsThunk";
 import { setScrollEvent } from "app/reducers/callsreducer";
+import ArchivedCallsContainer from "Components/ArchivedCallsContainer/ArchivedCallsContainer";
+import InboxContainer from "Components/InboxContainer/InboxContainer";
 
 const App = () => {
   const dispatch = useDispatch();
   const { isScrolledToTop, activeTab } = useSelector((state) => state.calls);
-
   useEffect(() => {
     const container = document.querySelector(".container");
 
@@ -47,6 +48,8 @@ const App = () => {
       </div>
       <div className="container-view">
         {activeTab === "allCalls" && <AllCallsContainer />}
+        {activeTab === "archive" && <ArchivedCallsContainer />}
+        {activeTab === "inbox" && <InboxContainer />}
       </div>
     </div>
   );

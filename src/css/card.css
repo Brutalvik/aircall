@@ -11,7 +11,7 @@
 
 .card-container p {
   font-size: 16px;
-  margin-right: 10px;
+  margin-left: 10%;
   width: 120px;
 }
 
@@ -31,6 +31,10 @@
 
 .icons {
   cursor: pointer;
+}
+
+.badge-container {
+  border: 1px solid black;
 }
 
 .voicemail-call {
@@ -57,4 +61,17 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.time-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 65px;
+}
+
+.time-container p {
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a4a4a4;
 }
