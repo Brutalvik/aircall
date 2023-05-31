@@ -5,6 +5,7 @@ const initialState = {
   allCalls: [],
   isLoading: false,
   isScrolledToTop: true,
+  archiveTriggered: true,
 };
 
 const callsSlice = createSlice({
@@ -20,10 +21,17 @@ const callsSlice = createSlice({
     setScrollEvent: (state, action) => {
       state.isScrolledToTop = action.payload;
     },
+    triggerArchive: (state) => {
+      state.archiveTriggered = !state.archiveTriggered;
+    },
   },
 });
 
-export const { getAllCallsSuccess, setActiveTab, setScrollEvent } =
-  callsSlice.actions;
+export const {
+  getAllCallsSuccess,
+  setActiveTab,
+  setScrollEvent,
+  triggerArchive,
+} = callsSlice.actions;
 
 export default callsSlice.reducer;

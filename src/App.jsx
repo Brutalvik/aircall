@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 
 import Header from "Components/Header/Header";
@@ -15,7 +15,12 @@ import InboxContainer from "Components/InboxContainer/InboxContainer";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isScrolledToTop, activeTab } = useSelector((state) => state.calls);
+  const { isScrolledToTop, activeTab, archiveTriggered } = useSelector(
+    (state) => state.calls
+  );
+
+  console.log(archiveTriggered);
+
   useEffect(() => {
     const container = document.querySelector(".container");
 
@@ -34,7 +39,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getCallsData(dispatch));
-  }, []);
+  }, [archiveTriggered]);
 
   return (
     <div className="container">

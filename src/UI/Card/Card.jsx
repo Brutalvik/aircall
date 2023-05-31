@@ -4,7 +4,8 @@ import {
   BsFillTelephoneXFill,
   BsFillInfoCircleFill,
 } from "react-icons/bs";
-import { BiVoicemail, BiArchiveIn, BiArchiveOut } from "react-icons/bi";
+import { BiVoicemail, BiArchiveOut } from "react-icons/bi";
+import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import Badge from "@mui/material/Badge";
 import { handleInformationDisplay } from "helpers/functions";
 import { archiveCall } from "app/thunks/patchArchiveCallThunk";
@@ -53,12 +54,12 @@ const Card = ({
         {isArchived ? (
           <BiArchiveOut
             className="icons"
-            onClick={() => dispatch(unarchiveCall(id))}
+            onClick={() => dispatch(unarchiveCall({ id, dispatch }))}
           />
         ) : (
-          <BiArchiveIn
+          <HiArchiveBoxArrowDown
             className="icons"
-            onClick={() => dispatch(archiveCall(id))}
+            onClick={() => dispatch(archiveCall({ id, dispatch }))}
           />
         )}
         <div className="time-container">
