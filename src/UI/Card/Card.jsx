@@ -6,12 +6,14 @@ import {
 } from "react-icons/bs";
 import { BiVoicemail, BiArchiveOut } from "react-icons/bi";
 import { HiArchiveBoxArrowDown } from "react-icons/hi2";
-import Badge from "@mui/material/Badge";
+import { useDispatch } from "react-redux";
 import { handleInformationDisplay } from "helpers/functions";
 import { archiveCall } from "app/thunks/patchArchiveCallThunk";
 import { unarchiveCall } from "app/thunks/patchUnarchiveCallThunk";
+import Badge from "@mui/material/Badge";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
 import moment from "moment";
-import { useDispatch } from "react-redux";
 
 const Card = ({
   direction,
@@ -47,20 +49,32 @@ const Card = ({
           {count > 1 && <Badge badgeContent={count} color="error" />}
         </div>
         <p>{from}</p>
-        <BsFillInfoCircleFill
-          className="icons"
-          onClick={handleInformationDisplay}
-        />
+        <Tooltip title="Info">
+          <div>
+            <BsFillInfoCircleFill
+              className="icons"
+              onClick={handleInformationDisplay}
+            />
+          </div>
+        </Tooltip>
         {isArchived ? (
-          <BiArchiveOut
-            className="icons"
-            onClick={() => dispatch(unarchiveCall({ id, dispatch }))}
-          />
+          <Tooltip title="Unarchive">
+            <div>
+              <BiArchiveOut
+                className="icons"
+                onClick={() => dispatch(unarchiveCall({ id, dispatch }))}
+              />
+            </div>
+          </Tooltip>
         ) : (
-          <HiArchiveBoxArrowDown
-            className="icons"
-            onClick={() => dispatch(archiveCall({ id, dispatch }))}
-          />
+          <Tooltip title="Archive">
+            <div>
+              <HiArchiveBoxArrowDown
+                className="icons"
+                onClick={() => dispatch(archiveCall({ id, dispatch }))}
+              />
+            </div>
+          </Tooltip>
         )}
         <div className="time-container">
           <p>{moment(createdAt).format("hh:mm A")}</p>
