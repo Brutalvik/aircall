@@ -23,14 +23,11 @@
 }
 
 #app .header-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: #fff;
 }
 
 #app .header-container-sticky {
   display: grid;
-  grid-template-columns: 3fr 9fr;
+  grid-template-columns: 2fr 10fr;
   position: sticky;
   top: 0;
   background-color: #fff;
