@@ -1,3 +1,4 @@
+import { countCallsFromSameNumber } from "helpers/functions";
 import React from "react";
 import { useSelector } from "react-redux";
 //UI Components
@@ -6,30 +7,26 @@ import Card from "UI/Card/Card";
 
 const Container = () => {
   const { allCalls } = useSelector((state) => state.calls);
+  const propertiesToCheck = ["from", "call_type"];
+  const groupedCalls = countCallsFromSameNumber(allCalls, propertiesToCheck);
+  console.log(groupedCalls);
+  groupedCalls.map((call) => console.log(call.obj));
   return (
     <div>
-      {allCalls.map(
-        ({
-          id,
-          duration,
-          from,
-          to,
-          call_type,
-          is_archived,
-          direction,
-          created_at,
-        }) =>
-          from && (
+      {groupedCalls.map(
+        (call) =>
+          call.obj.from && (
             <Card
-              key={id}
-              id={id}
-              duration={duration}
-              from={from}
-              direction={direction}
-              isArchived={is_archived}
-              createdAt={created_at}
-              callType={call_type}
-              to={to}
+              key={call.obj.id}
+              id={call.obj.id}
+              duration={call.obj.duration}
+              from={call.obj.from}
+              direction={call.obj.direction}
+              isArchived={call.obj.is_archived}
+              createdAt={call.obj.created_at}
+              callType={call.obj.call_type}
+              to={call.obj.to}
+              count={call.count}
             />
           )
       )}
