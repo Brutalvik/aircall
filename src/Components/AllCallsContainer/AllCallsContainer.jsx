@@ -5,12 +5,11 @@ import { useSelector } from "react-redux";
 
 import Card from "UI/Card/Card";
 
-const Container = () => {
+const AllCallsContainer = () => {
   const { allCalls } = useSelector((state) => state.calls);
   const propertiesToCheck = ["from", "call_type"];
   const groupedCalls = countCallsFromSameNumber(allCalls, propertiesToCheck);
-  console.log(groupedCalls);
-  groupedCalls.map((call) => console.log(call.obj));
+
   return (
     <div>
       {groupedCalls.map(
@@ -34,4 +33,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default AllCallsContainer;

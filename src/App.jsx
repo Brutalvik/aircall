@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 
 import Header from "Components/Header/Header";
-import Container from "Components/Container/Container";
+import AllCallsContainer from "Components/AllCallsContainer/AllCallsContainer";
 import Appbar from "UI/Appbar/Appbar";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -21,10 +21,8 @@ const App = () => {
     const handleScroll = () => {
       if (container.scrollTop === 0) {
         dispatch(setScrollEvent(true));
-        console.log("top");
       } else {
         dispatch(setScrollEvent(false));
-        console.log("scrolled");
       }
     };
     container.addEventListener("scroll", handleScroll);
@@ -48,7 +46,7 @@ const App = () => {
         <Appbar />
       </div>
       <div className="container-view">
-        <Container />
+        <AllCallsContainer />
       </div>
     </div>
   );

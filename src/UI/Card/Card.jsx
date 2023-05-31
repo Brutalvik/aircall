@@ -6,6 +6,8 @@ import {
 } from "react-icons/bs";
 import { BiVoicemail, BiArchiveIn } from "react-icons/bi";
 import Badge from "@mui/material/Badge";
+import { handleInformationDisplay, handleArchive } from "helpers/functions";
+import moment from "moment";
 
 const Card = ({
   direction,
@@ -19,28 +21,33 @@ const Card = ({
   count,
 }) => {
   return (
-    <div className="card-container" key={id}>
-      {callType === "missed" && (
+    <div>
+      <div className="date-container">
+        <span>{moment(createdAt).format("MMM DD, YYYY")}</span>
+      </div>
+      <div className="card-container" key={id}>
         <div className="icons-container">
-          <BsFillTelephoneXFill className="missed-call" />
+          {callType === "missed" && (
+            <BsFillTelephoneXFill className="missed-call" />
+          )}
+          {callType === "voicemail" && (
+            <BiVoicemail className="voicemail-call" />
+          )}
+          {callType === "answered" && (
+            <BsFillTelephoneInboundFill className="answered-call" />
+          )}
+        </div>
+
+        <div className="badge-container">
           {count > 1 && <Badge badgeContent={count} color="error" />}
         </div>
-      )}
-      {callType === "voicemail" && (
-        <div className="icons-container">
-          <BiVoicemail className="voicemail-call" />
-          {count > 1 && <Badge badgeContent={count} color="error" />}
-        </div>
-      )}
-      {callType === "answered" && (
-        <div className="icons-container">
-          <BsFillTelephoneInboundFill className="answered-call" />
-          {count > 1 && <Badge badgeContent={count} color="error" />}
-        </div>
-      )}
-      <p>{from}</p>
-      <BsFillInfoCircleFill className="icons" />
-      <BiArchiveIn className="icons" />
+        <p>{from}</p>
+        <BsFillInfoCircleFill
+          className="icons"
+          onClick={handleInformationDisplay}
+        />
+        <BiArchiveIn className="icons" onClick={handleArchive} />
+      </div>
     </div>
   );
 };

@@ -47,7 +47,14 @@
 }
 
 span {
-  font-size: 12px;
-  color: #6b6a6a;
-  font-weight: 500;
+  font-size: 14px;
+  color: #a4a4a4;
+  font-weight: 700;
+  margin-bottom: 3%;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
