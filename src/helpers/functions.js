@@ -21,3 +21,9 @@ export const countCallsFromSameNumber = (arr, properties) => {
   const uniqueObjects = Object.values(valueCounts);
   return uniqueObjects;
 };
+
+export const getRandomLetter = () => {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const randomIndex = Math.floor(Math.random() * letters.length);
+  return letters.charAt(randomIndex);
+};

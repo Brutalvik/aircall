@@ -9,6 +9,7 @@ const AllCallsContainer = () => {
   const { allCalls } = useSelector((state) => state.calls);
   const propertiesToCheck = ["from", "call_type"];
   const groupedCalls = countCallsFromSameNumber(allCalls, propertiesToCheck);
+
   return (
     <div>
       {groupedCalls.map(
