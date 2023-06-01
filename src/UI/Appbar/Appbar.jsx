@@ -1,7 +1,5 @@
 import React from "react";
 import { handleActiveTab } from "helpers/functions";
-
-//REACT ICONS
 import {
   BsFillArchiveFill,
   BsInboxesFill,

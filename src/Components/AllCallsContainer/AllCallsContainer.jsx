@@ -1,8 +1,6 @@
-import { countCallsFromSameNumber } from "helpers/functions";
 import React from "react";
+import { countCallsFromSameNumber } from "helpers/functions";
 import { useSelector } from "react-redux";
-//UI Components
-
 import Card from "UI/Card/Card";
 
 const AllCallsContainer = () => {

@@ -1,8 +1,6 @@
-import { countCallsFromSameNumber } from "helpers/functions";
 import React from "react";
 import { useSelector } from "react-redux";
-//UI Components
-
+import { countCallsFromSameNumber } from "helpers/functions";
 import Card from "UI/Card/Card";
 
 const ArchivedCallsContainer = () => {

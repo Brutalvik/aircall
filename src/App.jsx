@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
-
 import Header from "Components/Header/Header";
 import AllCallsContainer from "Components/AllCallsContainer/AllCallsContainer";
 import Appbar from "UI/Appbar/Appbar";
-
 import { useDispatch, useSelector } from "react-redux";
 import { Provider } from "react-redux";
 import store from "app/store";
@@ -16,8 +14,9 @@ import Information from "Components/Information/Information";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isScrolledToTop, activeTab, archiveTriggered, openModal } =
-    useSelector((state) => state.calls);
+  const { isScrolledToTop, activeTab, archiveTriggered } = useSelector(
+    (state) => state.calls
+  );
 
   useEffect(() => {
     const container = document.querySelector(".container");

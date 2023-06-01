@@ -17,7 +17,7 @@ const Information = () => {
     (state) => state.calls.singleCall
   );
   const { hours, minutes, seconds } = convertSecondsToTime(duration);
-  console.log("H : ", hours, "M: ", minutes, "S: ", seconds);
+
   return (
     <div className="info-container">
       <BiArrowBack
