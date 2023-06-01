@@ -12,6 +12,7 @@ import { getCallsData } from "app/thunks/getAllCallsThunk";
 import { setScrollEvent } from "app/reducers/callsreducer";
 import ArchivedCallsContainer from "Components/ArchivedCallsContainer/ArchivedCallsContainer";
 import InboxContainer from "Components/InboxContainer/InboxContainer";
+import Information from "Components/Information/Information";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ const App = () => {
         {activeTab === "allCalls" && <AllCallsContainer />}
         {activeTab === "archive" && <ArchivedCallsContainer />}
         {activeTab === "inbox" && <InboxContainer />}
+        {activeTab === "info" && <Information />}
       </div>
     </div>
   );

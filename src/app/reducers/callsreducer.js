@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   activeTab: "allCalls",
   allCalls: [],
-  isLoading: false,
   isScrolledToTop: true,
   archiveTriggered: true,
   singleCall: {},

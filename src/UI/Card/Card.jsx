@@ -13,6 +13,7 @@ import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
 import moment from "moment";
 import { getSingleCall } from "app/thunks/getSingleCall";
+import { handleActiveTab } from "helpers/functions";
 
 const Card = ({
   direction,
@@ -26,6 +27,12 @@ const Card = ({
   count,
 }) => {
   const dispatch = useDispatch();
+
+  const handleInfoDisplay = () => {
+    handleActiveTab("info", dispatch);
+    dispatch(getSingleCall({ id, dispatch }));
+  };
+
   return (
     <div>
       <div className="date-container">
@@ -52,7 +59,7 @@ const Card = ({
           <div>
             <BsFillInfoCircleFill
               className="icons"
-              onClick={() => dispatch(getSingleCall({ id, dispatch }))}
+              onClick={handleInfoDisplay}
             />
           </div>
         </Tooltip>
