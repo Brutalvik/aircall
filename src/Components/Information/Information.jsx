@@ -3,24 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { BiArrowBack } from "react-icons/bi";
-import { handleActiveTab } from "helpers/functions";
+import {
+  callIcon,
+  convertSecondsToTime,
+  handleActiveTab,
+} from "helpers/functions";
 import { getRandomLetter } from "helpers/functions";
 import moment from "moment";
 
-const Information = ({
-  createdAt,
-  from,
-  direction,
-  duration,
-  callType,
-  isArchived,
-  id,
-  to,
-  count,
-}) => {
+const Information = () => {
   const dispatch = useDispatch();
-  const { singleCall } = useSelector((state) => state.calls);
-  console.log("singleCall", singleCall);
+  const { call_type, created_at, direction, duration, from } = useSelector(
+    (state) => state.calls.singleCall
+  );
+  const { hours, minutes, seconds } = convertSecondsToTime(duration);
+  console.log("H : ", hours, "M: ", minutes, "S: ", seconds);
   return (
     <div className="info-container">
       <BiArrowBack
@@ -34,21 +31,31 @@ const Information = ({
       </div>
       <div className="card-container">
         <div className="date-container">
-          <span>{moment(createdAt).format("MMM DD, YYYY")}</span>
+          <span>{moment(created_at).format("MMM DD, YYYY")}</span>
         </div>
         <div className="time-container">
-          <p>{moment(createdAt).format("hh:mm A")}</p>
+          <p>{moment(created_at).format("hh:mm A")}</p>
         </div>
       </div>
       <div className="card-container">
+        <div className="icons-container">{callIcon(call_type, direction)}</div>
+        <p>Phone Number: </p>
         <div className="date-container">
-          <span>Phone Number:</span>
-          <span>
-            {direction}
-            {from}
-          </span>
+          <span>{from}</span>
         </div>
       </div>
+      {duration !== 0 && (
+        <div className="card-container">
+          <p>Duration</p>
+          {hours == 0 && minutes == 0 ? (
+            <p>{seconds} Seconds</p>
+          ) : (
+            <p>
+              {hours}:{minutes}:{seconds}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

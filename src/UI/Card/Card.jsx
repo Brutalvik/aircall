@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
-import {
-  BsFillTelephoneInboundFill,
-  BsFillTelephoneXFill,
-  BsFillInfoCircleFill,
-  BsFillTelephoneOutboundFill,
-} from "react-icons/bs";
-import { BiVoicemail, BiArchiveOut } from "react-icons/bi";
+import React from "react";
+import { BsFillInfoCircleFill } from "react-icons/bs";
+import { BiArchiveOut } from "react-icons/bi";
 import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 import { archiveCall } from "app/thunks/patchArchiveCallThunk";
@@ -14,7 +9,7 @@ import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
 import moment from "moment";
 import { getSingleCall } from "app/thunks/getSingleCall";
-import { handleActiveTab } from "helpers/functions";
+import { handleActiveTab, callIcon } from "helpers/functions";
 
 const Card = ({
   direction,
@@ -40,24 +35,7 @@ const Card = ({
         <span>{moment(createdAt).format("MMM DD, YYYY")}</span>
       </div>
       <div className="card-container" key={id}>
-        <div className="icons-container">
-          {callType === "missed" && direction === "inbound" && (
-            <BsFillTelephoneXFill className="missed-call" />
-          )}
-          {callType === "voicemail" && (
-            <BiVoicemail className="voicemail-call" />
-          )}
-          {callType === "answered" && direction === "inbound" && (
-            <BsFillTelephoneInboundFill className="answered-call" />
-          )}
-          {callType === "answered" && direction === "outbound" && (
-            <BsFillTelephoneOutboundFill className="answered-call" />
-          )}
-          {callType === "missed" && direction === "outbound" && (
-            <BsFillTelephoneOutboundFill className="missed-call" />
-          )}
-        </div>
-
+        <div className="icons-container">{callIcon(callType, direction)}</div>
         <div className="badge-container">
           {count > 1 && <Badge badgeContent={count} color="error" />}
         </div>
