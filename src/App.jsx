@@ -15,11 +15,8 @@ import InboxContainer from "Components/InboxContainer/InboxContainer";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isScrolledToTop, activeTab, archiveTriggered } = useSelector(
-    (state) => state.calls
-  );
-
-  console.log(archiveTriggered);
+  const { isScrolledToTop, activeTab, archiveTriggered, openModal } =
+    useSelector((state) => state.calls);
 
   useEffect(() => {
     const container = document.querySelector(".container");

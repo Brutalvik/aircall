@@ -7,13 +7,12 @@ import {
 import { BiVoicemail, BiArchiveOut } from "react-icons/bi";
 import { HiArchiveBoxArrowDown } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
-import { handleInformationDisplay } from "helpers/functions";
 import { archiveCall } from "app/thunks/patchArchiveCallThunk";
 import { unarchiveCall } from "app/thunks/patchUnarchiveCallThunk";
 import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
 import moment from "moment";
+import { getSingleCall } from "app/thunks/getSingleCall";
 
 const Card = ({
   direction,
@@ -53,7 +52,7 @@ const Card = ({
           <div>
             <BsFillInfoCircleFill
               className="icons"
-              onClick={handleInformationDisplay}
+              onClick={() => dispatch(getSingleCall({ id, dispatch }))}
             />
           </div>
         </Tooltip>

@@ -21,7 +21,3 @@ export const countCallsFromSameNumber = (arr, properties) => {
   const uniqueObjects = Object.values(valueCounts);
   return uniqueObjects;
 };
-
-export const handleInformationDisplay = () => {
-  console.log("INFO CLICKED");
-};
