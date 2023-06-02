@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { triggerArchive } from "app/reducers/callsreducer";
+import { triggerArchive, setLoading } from "app/reducers/callsreducer";
 import axios from "axios";
 
 export const unarchiveCall = createAsyncThunk(
   "unarchiveCall",
   ({ id, dispatch }) => {
+    dispatch(setLoading(true));
     const options = {
       is_archived: false,
     };
@@ -12,8 +13,10 @@ export const unarchiveCall = createAsyncThunk(
       axios
         .patch(`${process.env.API_URL}/${id}`, options)
         .then(({ status }) => status === 200 && dispatch(triggerArchive()));
+      dispatch(setLoading(false));
     } catch (error) {
-      console.log(error);
+      dispatch(setLoading(false));
+      throw error;
     }
   }
 );

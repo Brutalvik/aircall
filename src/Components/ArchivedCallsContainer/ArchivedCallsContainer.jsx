@@ -1,14 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { countCallsFromSameNumber } from "helpers/functions";
+import { countCallsFromSameNumber, hasArchivedItem } from "helpers/functions";
 import Card from "UI/Card/Card";
+import Spinner from "UI/Spinner/Spinner";
 
 const ArchivedCallsContainer = () => {
-  const { allCalls } = useSelector((state) => state.calls);
+  const { allCalls, isLoading } = useSelector((state) => state.calls);
   const propertiesToCheck = ["from", "call_type"];
   const groupedCalls = countCallsFromSameNumber(allCalls, propertiesToCheck);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : hasArchivedItem(groupedCalls) ? (
     <div>
       {groupedCalls.map(
         (call) =>
@@ -28,6 +31,10 @@ const ArchivedCallsContainer = () => {
             />
           )
       )}
+    </div>
+  ) : (
+    <div className="center-container">
+      <span>No Archived Calls !</span>
     </div>
   );
 };

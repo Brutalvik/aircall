@@ -68,3 +68,7 @@ export const convertSecondsToTime = (totalSeconds) => {
     seconds: formatTime(remainingSeconds),
   };
 };
+
+export const hasArchivedItem = (array) => {
+  return array.some((item) => item.obj.is_archived === true);
+};

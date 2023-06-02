@@ -2,13 +2,16 @@ import React from "react";
 import { countCallsFromSameNumber } from "helpers/functions";
 import { useSelector } from "react-redux";
 import Card from "UI/Card/Card";
+import Spinner from "UI/Spinner/Spinner";
 
 const AllCallsContainer = () => {
-  const { allCalls } = useSelector((state) => state.calls);
+  const { allCalls, isLoading } = useSelector((state) => state.calls);
   const propertiesToCheck = ["from", "call_type"];
   const groupedCalls = countCallsFromSameNumber(allCalls, propertiesToCheck);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div>
       {groupedCalls.map(
         (call) =>

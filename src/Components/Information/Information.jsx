@@ -10,15 +10,19 @@ import {
 } from "helpers/functions";
 import { getRandomLetter } from "helpers/functions";
 import moment from "moment";
+import Spinner from "UI/Spinner/Spinner";
 
 const Information = () => {
   const dispatch = useDispatch();
   const { call_type, created_at, direction, duration, from } = useSelector(
     (state) => state.calls.singleCall
   );
+  const { isLoading } = useSelector((state) => state.calls);
   const { hours, minutes, seconds } = convertSecondsToTime(duration);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="info-container">
       <BiArrowBack
         className="back-icon"

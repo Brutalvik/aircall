@@ -6,6 +6,7 @@ const initialState = {
   isScrolledToTop: true,
   archiveTriggered: true,
   singleCall: {},
+  isLoading: false,
 };
 
 const callsSlice = createSlice({
@@ -27,6 +28,9 @@ const callsSlice = createSlice({
     getSingleCallSuccess: (state, action) => {
       state.singleCall = action.payload;
     },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
@@ -36,6 +40,7 @@ export const {
   setScrollEvent,
   triggerArchive,
   getSingleCallSuccess,
+  setLoading,
 } = callsSlice.actions;
 
 export default callsSlice.reducer;
