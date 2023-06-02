@@ -41,19 +41,23 @@ const Information = () => {
         <div className="icons-container">{callIcon(call_type, direction)}</div>
         <p>Phone Number: </p>
         <div className="date-container">
-          <span>{from}</span>
+          <p>{from}</p>
         </div>
       </div>
       {duration !== 0 && (
         <div className="card-container">
-          <p>Duration</p>
-          {hours == 0 && minutes == 0 ? (
-            <p>{seconds} Seconds</p>
-          ) : (
-            <p>
-              {hours}:{minutes}:{seconds}
-            </p>
-          )}
+          <div className="date-container">
+            <p>Duration</p>
+          </div>
+          <div className="date-container">
+            {hours == 0 && minutes == 0 ? (
+              <p>{seconds} Seconds</p>
+            ) : (
+              <p>
+                {hours}:{minutes}:{seconds}
+              </p>
+            )}
+          </div>
         </div>
       )}
     </div>
