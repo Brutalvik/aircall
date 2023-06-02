@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   resolve: {
@@ -40,6 +41,13 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./public/index.html",
       filename: "./index.html",
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        API_URL: JSON.stringify(
+          "https://cerulean-marlin-wig.cyclic.app/activities"
+        ),
+      },
     }),
   ],
 };

@@ -10,10 +10,7 @@ export const archiveCall = createAsyncThunk(
     };
     try {
       axios
-        .patch(
-          `https://cerulean-marlin-wig.cyclic.app/activities/${id}`,
-          options
-        )
+        .patch(`${process.env.API_URL}/${id}`, options)
         .then(({ status }) => status === 200 && dispatch(triggerArchive()));
     } catch (error) {
       console.log(error);

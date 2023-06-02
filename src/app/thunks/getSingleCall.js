@@ -7,7 +7,7 @@ export const getSingleCall = createAsyncThunk(
   ({ id, dispatch }) => {
     try {
       axios
-        .get(`https://cerulean-marlin-wig.cyclic.app/activities/${id}`)
+        .get(`${process.env.API_URL}/${id}`)
         .then(({ data }) => dispatch(getSingleCallSuccess(data)));
     } catch (error) {
       console.log(error);
