@@ -36,9 +36,7 @@ const Card = ({
       </div>
       <div className="card-container" key={id}>
         <div className="icons-container">{callIcon(callType, direction)}</div>
-        <div className="badge-container">
-          {count > 1 && <Badge badgeContent={count} color="error" />}
-        </div>
+        <div>{count > 1 && <Badge badgeContent={count} color="error" />}</div>
         <p>{from}</p>
         <Tooltip title="Info">
           <div>
